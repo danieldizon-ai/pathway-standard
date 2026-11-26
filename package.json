@@ -1,7 +1,7 @@
 {
   "name": "pathway-standard",
   "version": "0.1.0",
-  "description": "Implementer specification, strict JSON Schema profile and reference validator for the Always Pathway handoff format v0.2.",
+  "description": "Implementer specification, strict JSON Schema profile and reference validator for the Always Pathway handoff format v0.2, a proposed interoperability standard for ministries and churches.",
   "license": "Apache-2.0",
   "author": "Daniel Dizon",
   "type": "module",

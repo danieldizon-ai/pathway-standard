@@ -2,15 +2,20 @@
 
 An implementer specification, a strict JSON Schema profile, a reference validator
 and a conformance suite for the **Always Pathway** handoff format, version 0.2:
-the open standard for passing a consenting person from one ministry to a church
-or another ministry, with their consent travelling with them, whatever
-software each side uses.
+a proposed open interoperability standard for passing a consenting person from
+one ministry to a local church or another ministry, with their consent
+travelling with them, whatever software each side uses.
 
 The upstream standard (Always Foundation, CC BY 4.0) is a JSON Schema plus a
 short description. This repository makes it precise enough for independent
 implementations to agree: it states every rule in RFC 2119 terms, adds the
 invariants the schema cannot express, defines the lifecycle of a handoff as a
 state machine, and checks all of it against 61 conformance vectors.
+
+> **Status: proposed standard.** Always Pathway is a proposal and is useful
+> only once ministries and churches adopt it. Always Foundation intends to take
+> on stewardship of this work and is looking at an initial trial in Australia
+> and New Zealand. See [Status, stewardship and trial](#status-stewardship-and-trial).
 
 ```
 npm ci
@@ -143,6 +148,38 @@ message relates a response to its handoff and receiver; objects are open; the
 two age bands can disagree; the under-15 parental rule is not in the schema
 and child assent has no field; and others. Each has a proposal. See
 [`docs/findings.md`](docs/findings.md).
+
+## Status, stewardship and trial
+
+**A proposal that depends on adoption.** Always Pathway v0.2 is a proposed
+model for interoperability between ministries and churches. A handoff format
+has value only when both the sending ministry and the receiving church can
+read it, so the standard becomes useful as organisations choose to adopt it.
+No ministry or church has adopted it yet, and nothing in this repository
+should be read as a claim that any has.
+
+**Stewardship.** Always Foundation created the upstream standard and intends
+to take on stewardship of this specification, strict profile, validator and
+conformance suite, so that the standard and its reference tooling are
+maintained in one place. Until that happens, this repository is maintained
+here, and the findings in [`docs/findings.md`](docs/findings.md) are offered
+to Always Foundation as proposals for the next version.
+
+**Initial trial: Australia and New Zealand.** Always Foundation is looking at
+trialling the format first in Australia and New Zealand, with a focus on
+online-to-offline pathways: helping a person who responds to an online
+ministry, through a website, an app, a course or a conversation, to be
+welcomed by a local church near them for follow-up, pastoral care and
+discipleship. A trial would test what this repository can only model:
+
+- whether online ministries and local churches can exchange handoffs reliably
+  using the software they already have;
+- whether consent, age and contact preferences are honoured at every step;
+- how quickly a person is contacted after they ask to connect, and how often
+  the connection is completed;
+- which gaps in v0.2 matter in practice, to inform the next version.
+
+The scope, partners and timing of a trial are not yet set.
 
 ## Relationship to Always Foundation
 

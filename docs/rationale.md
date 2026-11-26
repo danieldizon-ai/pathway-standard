@@ -22,8 +22,7 @@ testable: an event containing an email address is wrong by inspection
 
 ### Consent travels with the person
 
-The consent record is inside the response, not stored separately and looked
-up. A receiver can decide whether it may process the response from the
+The consent record travels inside the response. A receiver can decide whether it may process the response from the
 message alone, and a withdrawal can be checked against the exact record it
 withdraws. The structure follows the consent-record model of ISO/IEC TS 27560:
 purposes, recipients, wording version, the party who consented, and when.
@@ -43,7 +42,7 @@ any capability to recognise the same person across organisations, by any
 technique. The specification makes it a MUST NOT for implementations
 too (§11).
 
-### Borrowed, not invented, envelopes
+### Borrowed envelopes
 
 Events use CloudEvents 1.0, so they fit existing brokers, webhooks and
 tooling. The lifecycle resembles HL7 FHIR `Task`; the directory resembles
@@ -143,6 +142,6 @@ framework, bundler or linter configuration to keep current.
 - **Transport, authentication and authorisation.** The format assumes an
   authenticated channel (§10); defining one is a separate problem.
 - **Cross-handoff identity.** See above.
-- **Routing.** Which receiver to offer is policy, not format.
+- **Routing.** Which receiver to offer is a policy decision outside the format.
 - **Replacing the upstream standard.** This is a review and reference
   implementation, offered back.
