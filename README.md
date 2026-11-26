@@ -29,6 +29,7 @@ npx pathway-validate --kind bundle conformance/vectors/bundle-upstream-example.j
 | [`conformance/`](conformance/) | Language-neutral test vectors indexed by invariant code |
 | [`docs/findings.md`](docs/findings.md) | Fourteen gaps found in v0.2 while specifying it, with proposals |
 | [`docs/rationale.md`](docs/rationale.md) | Why the standard and this repository are designed as they are |
+| [`docs/how-it-fits-together.md`](docs/how-it-fits-together.md) | How Dust, Pathway and the Always network could form one path from attention to a local church, and the roles it needs |
 
 ## The format in one picture
 
