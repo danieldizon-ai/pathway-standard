@@ -1,0 +1,59 @@
+{
+  "name": "pathway-standard",
+  "version": "0.1.0",
+  "description": "Formal specification, strict JSON Schema profile and reference validator for the Always Pathway handoff format v0.2.",
+  "license": "Apache-2.0",
+  "author": "Daniel Dizon",
+  "type": "module",
+  "main": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "default": "./dist/src/index.js"
+    },
+    "./schema/strict": "./schema/pathway-v0.2-strict.schema.json",
+    "./schema/upstream": "./spec/upstream/always-pathway-v0.2.schema.json"
+  },
+  "bin": {
+    "pathway-validate": "./dist/src/cli.js"
+  },
+  "files": [
+    "dist/src",
+    "schema",
+    "spec",
+    "conformance",
+    "LICENSE",
+    "LICENSE-CC-BY-4.0",
+    "NOTICE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test dist/test/*.test.js",
+    "validate:example": "node dist/src/cli.js --kind bundle conformance/vectors/bundle-upstream-example.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielDizon-AI/pathway-standard.git"
+  },
+  "keywords": [
+    "json-schema",
+    "consent",
+    "cloudevents",
+    "referral",
+    "handoff",
+    "specification"
+  ],
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "~5.9.3"
+  }
+}

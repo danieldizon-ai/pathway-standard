@@ -1,0 +1,13 @@
+{
+  "specversion": "1.0",
+  "type": "handoff.accepted",
+  "source": "https://example-church.org/pathway",
+  "id": "evt_01",
+  "time": "2026-11-24T11:00:00Z",
+  "data": {
+    "handoffId": "c7a1e2b3-4d5f-4a6b-9c8d-7e6f5a4b3c21",
+    "orgId": "2f1d6a3e-8c1b-4a51-9b0e-1f7c2d9a4e10",
+    "state": "accepted",
+    "firstName": "Sam"
+  }
+}

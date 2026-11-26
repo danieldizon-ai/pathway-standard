@@ -1,0 +1,10 @@
+{
+  "specversion": "1.0",
+  "type": "organisation.verified",
+  "source": "https://example-church.org/pathway",
+  "id": "evt_04",
+  "time": "2026-11-24T14:00:00Z",
+  "data": {
+    "orgId": "2f1d6a3e-8c1b-4a51-9b0e-1f7c2d9a4e10"
+  }
+}

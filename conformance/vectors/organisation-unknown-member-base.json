@@ -1,0 +1,24 @@
+{
+  "id": "2f1d6a3e-8c1b-4a51-9b0e-1f7c2d9a4e10",
+  "kind": "church",
+  "displayName": "Example Community Church",
+  "trustLevel": "verified",
+  "country": "GB",
+  "region": "Greater Manchester",
+  "suburb": "Salford",
+  "postalCode": "M5 4WT",
+  "languages": [
+    "en",
+    "zh-Hans"
+  ],
+  "offers": [
+    "church",
+    "explore",
+    "group"
+  ],
+  "location": {
+    "lat": 53.4875,
+    "lng": -2.2901
+  },
+  "email": "hello@example.org"
+}

@@ -1,0 +1,618 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/DanielDizon-AI/pathway-standard/schema/pathway-v0.2-strict.schema.json",
+  "title": "Always Pathway v0.2, strict profile",
+  "description": "Strict profile of the Always Pathway standard v0.2 defined in spec/pathway-v0.2-formal.md section 9.2. Composes the upstream schema (Always Foundation, CC BY 4.0) by reference, closes every object (PW002) and encodes the invariants JSON Schema can express: PW101-PW103, PW105-PW107, PW302-PW306. Comments name the invariant each subschema encodes. This profile: (c) 2026 Daniel Dizon, CC BY 4.0.",
+  "$comment": "Invariants needing value comparison, context or text search (PW104, PW108, PW109, PW2xx, PW301, PW4xx) are enforced by the reference validator, not here.",
+  "$defs": {
+    "Organisation": {
+      "$comment": "PW002",
+      "$ref": "https://alwaysfoundation.org/spec/v0.2/handoff-standard.schema.json#/$defs/Organisation",
+      "properties": {
+        "location": {
+          "propertyNames": {
+            "enum": [
+              "lat",
+              "lng"
+            ]
+          }
+        },
+        "source": {
+          "propertyNames": {
+            "enum": [
+              "url",
+              "date"
+            ]
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "Consent": {
+      "$comment": "PW002, PW107",
+      "$ref": "https://alwaysfoundation.org/spec/v0.2/handoff-standard.schema.json#/$defs/Consent",
+      "properties": {
+        "purposes": {
+          "uniqueItems": true
+        },
+        "recipients": {
+          "uniqueItems": true
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "Response": {
+      "$comment": "PW002, PW101, PW102, PW103, PW105, PW106",
+      "$ref": "https://alwaysfoundation.org/spec/v0.2/handoff-standard.schema.json#/$defs/Response",
+      "properties": {
+        "contact": {
+          "$comment": "PW106",
+          "minProperties": 1,
+          "maxProperties": 1,
+          "propertyNames": {
+            "enum": [
+              "mobile",
+              "email"
+            ]
+          }
+        },
+        "consent": {
+          "$ref": "#/$defs/Consent",
+          "not": {
+            "$comment": "PW103",
+            "required": [
+              "withdrawnAt"
+            ]
+          },
+          "properties": {
+            "purposes": {
+              "$comment": "PW105",
+              "contains": {
+                "const": "connect.church"
+              }
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "$comment": "PW101",
+          "if": {
+            "properties": {
+              "ageBand": {
+                "const": "under13"
+              }
+            },
+            "required": [
+              "ageBand"
+            ]
+          },
+          "then": {
+            "properties": {
+              "consent": {
+                "properties": {
+                  "ageBand": {
+                    "const": "under13"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "$comment": "PW101",
+          "if": {
+            "properties": {
+              "ageBand": {
+                "const": "13-14"
+              }
+            },
+            "required": [
+              "ageBand"
+            ]
+          },
+          "then": {
+            "properties": {
+              "consent": {
+                "properties": {
+                  "ageBand": {
+                    "const": "13-14"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "$comment": "PW101",
+          "if": {
+            "properties": {
+              "ageBand": {
+                "const": "15-17"
+              }
+            },
+            "required": [
+              "ageBand"
+            ]
+          },
+          "then": {
+            "properties": {
+              "consent": {
+                "properties": {
+                  "ageBand": {
+                    "const": "15-17"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "$comment": "PW101",
+          "if": {
+            "properties": {
+              "ageBand": {
+                "const": "18+"
+              }
+            },
+            "required": [
+              "ageBand"
+            ]
+          },
+          "then": {
+            "properties": {
+              "consent": {
+                "properties": {
+                  "ageBand": {
+                    "const": "18+"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "$comment": "PW102 (response band)",
+          "if": {
+            "properties": {
+              "ageBand": {
+                "enum": [
+                  "under13",
+                  "13-14"
+                ]
+              }
+            },
+            "required": [
+              "ageBand"
+            ]
+          },
+          "then": {
+            "properties": {
+              "consent": {
+                "anyOf": [
+                  {
+                    "properties": {
+                      "party": {
+                        "const": "parent"
+                      }
+                    },
+                    "required": [
+                      "party"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "parentConfirmedAt"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "$comment": "PW102 (consent band; the lower band applies)",
+          "if": {
+            "properties": {
+              "consent": {
+                "properties": {
+                  "ageBand": {
+                    "enum": [
+                      "under13",
+                      "13-14"
+                    ]
+                  }
+                },
+                "required": [
+                  "ageBand"
+                ]
+              }
+            },
+            "required": [
+              "consent"
+            ]
+          },
+          "then": {
+            "properties": {
+              "consent": {
+                "anyOf": [
+                  {
+                    "properties": {
+                      "party": {
+                        "const": "parent"
+                      }
+                    },
+                    "required": [
+                      "party"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "parentConfirmedAt"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "HandoffEvent": {
+      "$comment": "PW002, PW302-PW306. CloudEvents optional context attributes are permitted; extension attributes are not.",
+      "$ref": "https://alwaysfoundation.org/spec/v0.2/handoff-standard.schema.json#/$defs/HandoffEvent",
+      "properties": {
+        "datacontenttype": {
+          "type": "string"
+        },
+        "dataschema": {
+          "type": "string",
+          "format": "uri"
+        },
+        "subject": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "$comment": "PW302",
+          "if": {
+            "properties": {
+              "type": {
+                "enum": [
+                  "handoff.offered",
+                  "handoff.accepted",
+                  "handoff.passed",
+                  "handoff.expired",
+                  "handoff.rerouted",
+                  "handoff.status_changed",
+                  "consent.withdrawn",
+                  "person.deleted"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "required": [
+                  "handoffId"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "$comment": "PW303",
+          "if": {
+            "properties": {
+              "type": {
+                "const": "handoff.offered"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "state": {
+                    "const": "offered"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "$comment": "PW303",
+          "if": {
+            "properties": {
+              "type": {
+                "const": "handoff.accepted"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "state": {
+                    "const": "accepted"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "$comment": "PW303",
+          "if": {
+            "properties": {
+              "type": {
+                "const": "handoff.passed"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "state": {
+                    "const": "routing"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "$comment": "PW303",
+          "if": {
+            "properties": {
+              "type": {
+                "const": "handoff.expired"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "state": {
+                    "enum": [
+                      "routing",
+                      "withdrawn"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "$comment": "PW303",
+          "if": {
+            "properties": {
+              "type": {
+                "const": "handoff.rerouted"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "state": {
+                    "const": "routing"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "$comment": "PW303",
+          "if": {
+            "properties": {
+              "type": {
+                "const": "handoff.status_changed"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "state": {
+                    "enum": [
+                      "accepted",
+                      "contacted",
+                      "care_team",
+                      "closed"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "$comment": "PW303",
+          "if": {
+            "properties": {
+              "type": {
+                "const": "consent.withdrawn"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "state": {
+                    "const": "withdrawn"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "$comment": "PW303",
+          "if": {
+            "properties": {
+              "type": {
+                "const": "person.deleted"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "state": {
+                    "const": "withdrawn"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "$comment": "PW303, PW306",
+          "if": {
+            "properties": {
+              "type": {
+                "enum": [
+                  "organisation.verified",
+                  "organisation.suspended"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "required": [
+                  "orgId"
+                ],
+                "not": {
+                  "anyOf": [
+                    {
+                      "required": [
+                        "handoffId"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "state"
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "$comment": "PW304",
+          "if": {
+            "properties": {
+              "type": {
+                "const": "handoff.passed"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "required": [
+                  "passReason"
+                ]
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "data": {
+                "not": {
+                  "required": [
+                    "passReason"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "$comment": "PW305",
+          "if": {
+            "properties": {
+              "type": {
+                "const": "handoff.status_changed"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "required": [
+                  "status"
+                ]
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "data": {
+                "not": {
+                  "required": [
+                    "status"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    }
+  }
+}

@@ -1,0 +1,656 @@
+{
+  "description": "Conformance vectors for the Always Pathway v0.2 strict profile. See conformance/README.md.",
+  "vectors": [
+    {
+      "file": "vectors/bundle-upstream-example.json",
+      "kind": "bundle",
+      "description": "The upstream example file, unchanged apart from the first name the website substitutes.",
+      "expect": {
+        "valid": true,
+        "codes": []
+      }
+    },
+    {
+      "file": "vectors/organisation-valid.json",
+      "kind": "organisation",
+      "description": "A complete directory entry.",
+      "expect": {
+        "valid": true,
+        "codes": []
+      }
+    },
+    {
+      "file": "vectors/organisation-minimal.json",
+      "kind": "organisation",
+      "description": "Only the required members.",
+      "expect": {
+        "valid": true,
+        "codes": []
+      }
+    },
+    {
+      "file": "vectors/organisation-unknown-member.json",
+      "kind": "organisation",
+      "description": "A member the standard does not define. Accepted by the base profile.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW002"
+        ]
+      }
+    },
+    {
+      "file": "vectors/organisation-unknown-member-base.json",
+      "kind": "organisation",
+      "description": "The same entry under the base profile, which ignores unknown members.",
+      "expect": {
+        "valid": true,
+        "codes": []
+      },
+      "options": {
+        "profile": "base"
+      }
+    },
+    {
+      "file": "vectors/organisation-lowercase-country.json",
+      "kind": "organisation",
+      "description": "Country codes are upper-case ISO 3166-1 alpha-2.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW001"
+        ]
+      }
+    },
+    {
+      "file": "vectors/organisation-nested-unknown.json",
+      "kind": "organisation",
+      "description": "Unknown member inside a nested object.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW002"
+        ]
+      }
+    },
+    {
+      "file": "vectors/response-valid-adult.json",
+      "kind": "response",
+      "description": "An adult consenting for themselves.",
+      "expect": {
+        "valid": true,
+        "codes": []
+      }
+    },
+    {
+      "file": "vectors/response-valid-13-14-parent.json",
+      "kind": "response",
+      "description": "A 13 to 14 year old with consent given by a parent.",
+      "expect": {
+        "valid": true,
+        "codes": []
+      }
+    },
+    {
+      "file": "vectors/response-valid-13-14-confirmed.json",
+      "kind": "response",
+      "description": "A 13 to 14 year old who consented, later confirmed by a parent.",
+      "expect": {
+        "valid": true,
+        "codes": []
+      }
+    },
+    {
+      "file": "vectors/response-valid-15-17-self.json",
+      "kind": "response",
+      "description": "A 15 to 17 year old may consent for themselves.",
+      "expect": {
+        "valid": true,
+        "codes": []
+      }
+    },
+    {
+      "file": "vectors/response-valid-under13.json",
+      "kind": "response",
+      "description": "Under 13: no first name, parent's contact, parent's consent.",
+      "expect": {
+        "valid": true,
+        "codes": []
+      }
+    },
+    {
+      "file": "vectors/response-under13-named.json",
+      "kind": "response",
+      "description": "Under 13s are never named (upstream schema).",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW001"
+        ]
+      }
+    },
+    {
+      "file": "vectors/response-13-14-self.json",
+      "kind": "response",
+      "description": "Under 15 consenting alone, with no parental confirmation.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW102"
+        ]
+      }
+    },
+    {
+      "file": "vectors/response-age-mismatch.json",
+      "kind": "response",
+      "description": "Consent records a younger band than the response; the lower band applies, so PW102 also fails.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW101",
+          "PW102"
+        ]
+      }
+    },
+    {
+      "file": "vectors/response-withdrawn.json",
+      "kind": "response",
+      "description": "A withdrawn consent must not travel.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW103"
+        ]
+      }
+    },
+    {
+      "file": "vectors/response-withdrawn-stored.json",
+      "kind": "response",
+      "description": "The same record validated as stored, not sent.",
+      "expect": {
+        "valid": true,
+        "codes": []
+      },
+      "options": {
+        "sending": false
+      }
+    },
+    {
+      "file": "vectors/response-withdrawn-before-collected.json",
+      "kind": "response",
+      "description": "Withdrawal earlier than collection.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW103",
+          "PW104"
+        ]
+      }
+    },
+    {
+      "file": "vectors/response-confirmation-before-collected.json",
+      "kind": "response",
+      "description": "Parental confirmation earlier than the consent it confirms.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW104"
+        ]
+      }
+    },
+    {
+      "file": "vectors/response-no-connect-purpose.json",
+      "kind": "response",
+      "description": "Handing someone on needs the connect.church purpose.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW105"
+        ]
+      }
+    },
+    {
+      "file": "vectors/response-two-contact-methods.json",
+      "kind": "response",
+      "description": "Upstream says one contact method.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW106"
+        ]
+      }
+    },
+    {
+      "file": "vectors/response-empty-contact.json",
+      "kind": "response",
+      "description": "An empty contact object.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW106"
+        ]
+      }
+    },
+    {
+      "file": "vectors/response-duplicate-purpose.json",
+      "kind": "response",
+      "description": "Purposes are a set.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW107"
+        ]
+      }
+    },
+    {
+      "file": "vectors/response-date-of-birth.json",
+      "kind": "response",
+      "description": "Extra personal data the person did not agree to share.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW002"
+        ]
+      }
+    },
+    {
+      "file": "vectors/response-bad-mobile.json",
+      "kind": "response",
+      "description": "Mobile numbers are E.164.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW001"
+        ]
+      }
+    },
+    {
+      "file": "vectors/response-future-consent.json",
+      "kind": "response",
+      "description": "Consent dated after the validation clock.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW108"
+        ]
+      },
+      "options": {
+        "now": "2026-11-01T00:00:00Z"
+      }
+    },
+    {
+      "file": "vectors/response-stale-consent.json",
+      "kind": "response",
+      "description": "Consent older than a receiver's 365-day policy.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW109"
+        ]
+      },
+      "options": {
+        "now": "2028-01-01T00:00:00Z",
+        "maxConsentAgeDays": 365
+      }
+    },
+    {
+      "file": "vectors/handoff-valid.json",
+      "kind": "handoff",
+      "description": "Named recipient, offered step.",
+      "expect": {
+        "valid": true,
+        "codes": []
+      }
+    },
+    {
+      "file": "vectors/handoff-recipient-not-covered.json",
+      "kind": "handoff",
+      "description": "Receiver not named, and next-nearby not allowed.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW201"
+        ]
+      }
+    },
+    {
+      "file": "vectors/handoff-next-nearby.json",
+      "kind": "handoff",
+      "description": "Receiver not named, but the person allowed a nearby alternative.",
+      "expect": {
+        "valid": true,
+        "codes": []
+      }
+    },
+    {
+      "file": "vectors/handoff-step-not-offered.json",
+      "kind": "handoff",
+      "description": "Warning only: the receiver does not list the requested step.",
+      "expect": {
+        "valid": true,
+        "codes": [
+          "PW202"
+        ]
+      }
+    },
+    {
+      "file": "vectors/handoff-minor-to-unverified.json",
+      "kind": "handoff",
+      "description": "Warning only: a minor offered to an organisation not verified for youth work.",
+      "expect": {
+        "valid": true,
+        "codes": [
+          "PW203"
+        ]
+      }
+    },
+    {
+      "file": "vectors/handoff-minor-to-verified-youth.json",
+      "kind": "handoff",
+      "description": "A minor offered to a youth-verified organisation.",
+      "expect": {
+        "valid": true,
+        "codes": []
+      }
+    },
+    {
+      "file": "vectors/event-valid-accepted.json",
+      "kind": "event",
+      "description": "The upstream example event.",
+      "expect": {
+        "valid": true,
+        "codes": []
+      }
+    },
+    {
+      "file": "vectors/event-valid-passed.json",
+      "kind": "event",
+      "description": "A pass with its reason.",
+      "expect": {
+        "valid": true,
+        "codes": []
+      }
+    },
+    {
+      "file": "vectors/event-valid-status.json",
+      "kind": "event",
+      "description": "A status update.",
+      "expect": {
+        "valid": true,
+        "codes": []
+      }
+    },
+    {
+      "file": "vectors/event-valid-organisation.json",
+      "kind": "event",
+      "description": "An organisation event.",
+      "expect": {
+        "valid": true,
+        "codes": []
+      }
+    },
+    {
+      "file": "vectors/event-email-in-subject.json",
+      "kind": "event",
+      "description": "Personal data in a CloudEvents attribute.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW301"
+        ]
+      }
+    },
+    {
+      "file": "vectors/event-phone-in-source.json",
+      "kind": "event",
+      "description": "Personal data in the event source.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW301"
+        ]
+      }
+    },
+    {
+      "file": "vectors/event-extension-attribute.json",
+      "kind": "event",
+      "description": "CloudEvents extension attributes are closed in the strict profile.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW002"
+        ]
+      }
+    },
+    {
+      "file": "vectors/event-extension-attribute-base.json",
+      "kind": "event",
+      "description": "Permitted in the base profile.",
+      "expect": {
+        "valid": true,
+        "codes": []
+      },
+      "options": {
+        "profile": "base"
+      }
+    },
+    {
+      "file": "vectors/event-first-name-in-data.json",
+      "kind": "event",
+      "description": "Upstream closes data; the strict profile reports the member too.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW001",
+          "PW002"
+        ]
+      }
+    },
+    {
+      "file": "vectors/event-missing-handoff-id.json",
+      "kind": "event",
+      "description": "A handoff event must name its handoff.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW302"
+        ]
+      }
+    },
+    {
+      "file": "vectors/event-state-mismatch.json",
+      "kind": "event",
+      "description": "handoff.accepted cannot report state closed.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW303"
+        ]
+      }
+    },
+    {
+      "file": "vectors/event-pass-without-reason.json",
+      "kind": "event",
+      "description": "A pass must give its reason.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW304"
+        ]
+      }
+    },
+    {
+      "file": "vectors/event-reason-on-accept.json",
+      "kind": "event",
+      "description": "passReason belongs only on handoff.passed.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW304"
+        ]
+      }
+    },
+    {
+      "file": "vectors/event-status-missing.json",
+      "kind": "event",
+      "description": "A status update without a status.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW305"
+        ]
+      }
+    },
+    {
+      "file": "vectors/event-status-on-offer.json",
+      "kind": "event",
+      "description": "status belongs only on handoff.status_changed.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW305"
+        ]
+      }
+    },
+    {
+      "file": "vectors/event-organisation-with-handoff.json",
+      "kind": "event",
+      "description": "Organisation events concern an organisation, not a handoff.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW306"
+        ]
+      }
+    },
+    {
+      "file": "vectors/stream-happy-path.json",
+      "kind": "stream",
+      "description": "Offered, accepted, contacted, closed.",
+      "expect": {
+        "valid": true,
+        "codes": []
+      }
+    },
+    {
+      "file": "vectors/stream-happy-path-complete.json",
+      "kind": "stream",
+      "description": "The same, as a complete log.",
+      "expect": {
+        "valid": true,
+        "codes": []
+      },
+      "options": {
+        "complete": true
+      }
+    },
+    {
+      "file": "vectors/stream-skip-acceptance.json",
+      "kind": "stream",
+      "description": "Offered straight to contacted.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW401"
+        ]
+      }
+    },
+    {
+      "file": "vectors/stream-accept-after-withdrawal.json",
+      "kind": "stream",
+      "description": "Nothing follows withdrawal.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW401"
+        ]
+      }
+    },
+    {
+      "file": "vectors/stream-event-after-deletion.json",
+      "kind": "stream",
+      "description": "A status update after the person's data was deleted.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW402"
+        ]
+      }
+    },
+    {
+      "file": "vectors/stream-redelivery.json",
+      "kind": "stream",
+      "description": "An exact redelivery is processed once.",
+      "expect": {
+        "valid": true,
+        "codes": []
+      }
+    },
+    {
+      "file": "vectors/stream-conflicting-duplicate.json",
+      "kind": "stream",
+      "description": "Two different events with the same source and id.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW403"
+        ]
+      }
+    },
+    {
+      "file": "vectors/stream-out-of-order.json",
+      "kind": "stream",
+      "description": "Supplied out of time order; valid once sorted (warning only).",
+      "expect": {
+        "valid": true,
+        "codes": [
+          "PW404"
+        ]
+      }
+    },
+    {
+      "file": "vectors/stream-pass-and-reoffer.json",
+      "kind": "stream",
+      "description": "One receiver passes; the next accepts.",
+      "expect": {
+        "valid": true,
+        "codes": []
+      }
+    },
+    {
+      "file": "vectors/stream-partial-starts-accepted.json",
+      "kind": "stream",
+      "description": "A sender with notify.sender first hears at acceptance.",
+      "expect": {
+        "valid": true,
+        "codes": []
+      }
+    },
+    {
+      "file": "vectors/stream-complete-starts-accepted.json",
+      "kind": "stream",
+      "description": "The same events cannot be a complete log.",
+      "expect": {
+        "valid": false,
+        "codes": [
+          "PW401"
+        ]
+      },
+      "options": {
+        "complete": true
+      }
+    },
+    {
+      "file": "vectors/stream-parent-expiry.json",
+      "kind": "stream",
+      "description": "Parental confirmation expired before routing (complete log).",
+      "expect": {
+        "valid": true,
+        "codes": []
+      },
+      "options": {
+        "complete": true
+      }
+    }
+  ]
+}

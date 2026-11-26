@@ -1,0 +1,23 @@
+pathway-standard
+Copyright 2026 Daniel Dizon
+
+Code is licensed under the Apache License, Version 2.0 (LICENSE).
+Specification text, the strict-profile schema and documentation are licensed
+under Creative Commons Attribution 4.0 International (LICENSE-CC-BY-4.0).
+
+This work builds on the Always Pathway standard v0.2 by Always Foundation,
+licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
+Source: https://github.com/alwaysfoundation/always-platform, spec/schemas/.
+
+- spec/upstream/always-pathway-v0.2.schema.json is the upstream schema,
+  unchanged.
+- spec/pathway-v0.2-formal.md restates the upstream standard and adds
+  invariants, a state machine, conformance profiles and security and privacy
+  considerations. Additions are marked with their source in section 7.
+- schema/pathway-v0.2-strict.schema.json composes the upstream schema by
+  reference and adds constraints.
+- conformance/vectors are derived from the upstream example file.
+
+"Always", "Always Foundation" and the Always mark are trademarks of Always
+Foundation. This project is not affiliated with or endorsed by Always
+Foundation.

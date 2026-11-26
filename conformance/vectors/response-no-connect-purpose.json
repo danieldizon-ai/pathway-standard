@@ -1,0 +1,25 @@
+{
+  "firstName": "Sam",
+  "contact": {
+    "mobile": "+447700900123"
+  },
+  "country": "GB",
+  "region": "Greater Manchester",
+  "ageBand": "18+",
+  "step": "explore",
+  "language": "en",
+  "consent": {
+    "id": "9b2e7c41-3d6f-4f0a-8e21-5a7c9d1b3f02",
+    "purposes": [
+      "notify.sender",
+      "resources"
+    ],
+    "recipients": [
+      "2f1d6a3e-8c1b-4a51-9b0e-1f7c2d9a4e10"
+    ],
+    "wordingVersion": "2026-11",
+    "party": "self",
+    "ageBand": "18+",
+    "collectedAt": "2026-11-24T09:30:00Z"
+  }
+}
