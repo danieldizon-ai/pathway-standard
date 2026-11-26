@@ -13,9 +13,9 @@ invariants the schema cannot express, defines the lifecycle of a handoff as a
 state machine, and checks all of it against 61 conformance vectors.
 
 > **Status: proposed standard.** Always Pathway is a proposal and is useful
-> only once ministries and churches adopt it. Always Foundation intends to take
-> on stewardship of this work and is looking at an initial trial in Australia
-> and New Zealand. See [Status, stewardship and trial](#status-stewardship-and-trial).
+> only once ministries and churches adopt it. It is stewarded by Always
+> Foundation, which plans an initial trial in Australia and New Zealand. See
+> [Status, stewardship and trial](#status-stewardship-and-trial).
 
 ```
 npm ci
@@ -158,15 +158,14 @@ read it, so the standard becomes useful as organisations choose to adopt it.
 No ministry or church has adopted it yet, and nothing in this repository
 should be read as a claim that any has.
 
-**Stewardship.** Always Foundation created the upstream standard and intends
-to take on stewardship of this specification, strict profile, validator and
-conformance suite, so that the standard and its reference tooling are
-maintained in one place. Until that happens, this repository is maintained
-here, and the findings in [`docs/findings.md`](docs/findings.md) are offered
-to Always Foundation as proposals for the next version.
+**Stewardship.** Always Foundation created the upstream standard and
+stewards this specification, strict profile, validator and conformance suite,
+so that the standard and its reference tooling are maintained in one place.
+The findings in [`docs/findings.md`](docs/findings.md) are proposals for the
+next version.
 
-**Initial trial: Australia and New Zealand.** Always Foundation is looking at
-trialling the format first in Australia and New Zealand, with a focus on
+**Initial trial: Australia and New Zealand.** Always Foundation plans to
+trial the format first in Australia and New Zealand, with a focus on
 online-to-offline pathways: helping a person who responds to an online
 ministry, through a website, an app, a course or a conversation, to be
 welcomed by a local church near them for follow-up, pastoral care and
@@ -184,10 +183,10 @@ The scope, partners and timing of a trial are not yet set.
 ## Relationship to Always Foundation
 
 The Always Pathway standard is created and owned by Always Foundation and
-licensed CC BY 4.0. This repository is independent work by Daniel Dizon, a
-founding contributor to Always Foundation, that builds on the published
-standard. It is not published, verified or endorsed by Always Foundation, and
-it contains no Always Foundation code. "Always" and "Always Foundation" are
+licensed CC BY 4.0. This repository was written by Daniel Dizon, a founding
+contributor to Always Foundation, and is stewarded by Always Foundation. It
+builds on the published standard and contains no code from Always
+Foundation's platform. "Always" and "Always Foundation" are
 trademarks of Always Foundation, used here only to refer to the standard.
 
 ## Licence

@@ -39,7 +39,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DanielDizon-AI/pathway-standard.git"
+    "url": "git+https://github.com/alwaysfoundation/pathway-standard.git"
   },
   "keywords": [
     "json-schema",

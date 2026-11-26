@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/DanielDizon-AI/pathway-standard/schema/pathway-v0.2-strict.schema.json",
+  "$id": "https://github.com/alwaysfoundation/pathway-standard/schema/pathway-v0.2-strict.schema.json",
   "title": "Always Pathway v0.2, strict profile",
   "description": "Strict profile of the Always Pathway standard v0.2 defined in spec/pathway-v0.2-spec.md section 9.2. Composes the upstream schema (Always Foundation, CC BY 4.0) by reference, closes every object (PW002) and encodes the invariants JSON Schema can express: PW101-PW103, PW105-PW107, PW302-PW306. Comments name the invariant each subschema encodes. This profile: (c) 2026 Daniel Dizon, CC BY 4.0.",
   "$comment": "Invariants needing value comparison, context or text search (PW104, PW108, PW109, PW2xx, PW301, PW4xx) are enforced by the reference validator, not here.",
