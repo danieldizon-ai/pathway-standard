@@ -1,6 +1,6 @@
 /**
  * Issue codes. Each corresponds to one invariant in
- * `spec/pathway-v0.2-formal.md` §7, with the same identifier.
+ * `spec/pathway-v0.2-spec.md` §7, with the same identifier.
  */
 
 export type Severity = 'error' | 'warning';

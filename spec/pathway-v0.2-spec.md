@@ -1,4 +1,4 @@
-# A formal specification of the Always Pathway handoff format, version 0.2
+# Always Pathway handoff format v0.2: implementer specification
 
 **Status:** independent research draft, revision 1 (2026-11-26).
 **Normative base:** Always Pathway standard v0.2, JSON Schema
@@ -63,7 +63,7 @@ This document:
   v0.2 does not define;
 - **defines** a closed-world strict profile (§9.2), expressed both as code and
   as a JSON Schema ([`../schema/pathway-v0.2-strict.schema.json`](../schema/pathway-v0.2-strict.schema.json));
-- **records** gaps found while formalising v0.2 in
+- **records** gaps found while specifying v0.2 in
   [`../docs/findings.md`](../docs/findings.md).
 
 Every added invariant notes its source. Where the source is an implementation
@@ -182,7 +182,7 @@ Purpose codes:
 ### 5.1 Age rules
 
 The upstream website states: "Age comes before anything else. Under 13s are
-never named, and a parent agrees for anyone under 15." Formally:
+never named, and a parent agrees for anyone under 15." In full:
 
 - **under13:** `firstName` absent; contact is a parent's; consent MUST be by
   or confirmed by a parent (PW102).
@@ -336,7 +336,7 @@ stateDiagram-v2
     withdrawn --> [*]
 ```
 
-The transition relation `δ ⊆ State × State` is:
+The permitted transitions are:
 
 | From | To |
 |---|---|
@@ -386,7 +386,7 @@ validator:
 3. starts in the state `⊥` (start);
 4. for each event with `data/state = s`, reports PW401 unless the current
    state is `⊥` and the stream is partial, or `s` is the current state, or
-   `(current, s) ∈ δ`; then sets current to `s`;
+   the pair (current, `s`) is in the transition table; then sets current to `s`;
 5. after a `person.deleted`, reports PW402 for any later event.
 
 Events without `data/state` do not change state.

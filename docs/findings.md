@@ -1,6 +1,6 @@
 # Findings: gaps in Always Pathway v0.2
 
-Formalising v0.2 (see `spec/pathway-v0.2-formal.md`) surfaced the gaps below.
+Specifying v0.2 in full (see `spec/pathway-v0.2-spec.md`) surfaced the gaps below.
 Each says what is missing, why it matters, how this repository handles it,
 and a proposal for a future upstream version. They are offered as review
 input to the standard's maintainers, not as criticism: v0.2 is an open draft
@@ -99,14 +99,14 @@ event carries it with a type that does not describe it. Proposal: a
 
 `handoff.accepted` may carry `state: "closed"`; `passReason` may appear on any
 type; a `handoff.*` event may omit `handoffId`; an `organisation.*` event may
-carry a `handoffId` and no `orgId`. §6.1 of the formal specification gives
+carry a `handoffId` and no `orgId`. §6.1 of the specification gives
 the table of permitted combinations, and the strict schema encodes it with
 `if`/`then`.
 
 ## F8. No lifecycle
 
 v0.2 lists states and event types but no transitions, so `withdrawn` followed
-by `accepted` is as valid as `offered` followed by `accepted`. The formal
+by `accepted` is as valid as `offered` followed by `accepted`. The
 specification defines a transition relation (§8) chosen to admit everything
 the reference implementation's engine can do and nothing it cannot, plus the
 rule that nothing follows `person.deleted`.
@@ -137,7 +137,7 @@ wording versions per sender, would close this.
 ## F13. Location precision
 
 `Organisation.location` has no stated precision. A small church or house group
-meeting in a home would publish that home's coordinates. The formal
+meeting in a home would publish that home's coordinates. The
 specification adds that it SHOULD be the locality centroid.
 
 ## F14. `orgId` semantics

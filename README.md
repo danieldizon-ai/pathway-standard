@@ -1,6 +1,6 @@
 # pathway-standard
 
-A formal specification, a strict JSON Schema profile, a reference validator
+An implementer specification, a strict JSON Schema profile, a reference validator
 and a conformance suite for the **Always Pathway** handoff format, version 0.2:
 the open standard for passing a consenting person from one ministry to a church
 or another ministry, with their consent travelling with them, whatever
@@ -22,12 +22,12 @@ npx pathway-validate --kind bundle conformance/vectors/bundle-upstream-example.j
 
 | Path | What it is |
 |---|---|
-| [`spec/pathway-v0.2-formal.md`](spec/pathway-v0.2-formal.md) | The formal specification: data model, invariants PW001 to PW404, state machine, conformance classes, security and privacy considerations |
+| [`spec/pathway-v0.2-spec.md`](spec/pathway-v0.2-spec.md) | The specification: data model, invariants PW001 to PW404, state machine, conformance classes, security and privacy considerations |
 | [`spec/upstream/`](spec/upstream/) | The upstream v0.2 schema, unchanged |
 | [`schema/pathway-v0.2-strict.schema.json`](schema/pathway-v0.2-strict.schema.json) | The strict profile as JSON Schema 2020-12, composing the upstream schema by reference |
 | [`src/`](src/) | The reference validator (TypeScript, strict mode) and `pathway-validate` CLI |
 | [`conformance/`](conformance/) | Language-neutral test vectors indexed by invariant code |
-| [`docs/findings.md`](docs/findings.md) | Fourteen gaps found in v0.2 while formalising it, with proposals |
+| [`docs/findings.md`](docs/findings.md) | Fourteen gaps found in v0.2 while specifying it, with proposals |
 | [`docs/rationale.md`](docs/rationale.md) | Why the standard and this repository are designed as they are |
 
 ## The format in one picture
@@ -56,7 +56,7 @@ separate handoff with its own consent; nothing links them.
                          │             receiver         │──▶ PW201–PW203
                          │             single event     │──▶ PW301–PW306
                          ├──────────────────────────────┤
-                         │ state-machine.ts  δ, streams │──▶ PW401–PW404
+                         │ state-machine.ts  streams    │──▶ PW401–PW404
                          └──────────────────────────────┘
                                         │
                                         ▼
@@ -118,7 +118,7 @@ Each is defined, with its source, in spec §7.
 
 ## Design decisions
 
-- **Formalise, don't fork.** The upstream schema is the base and is included
+- **Specify, don't fork.** The upstream schema is the base and is included
   unchanged. Every added rule cites the upstream text or the reference
   implementation's documented behaviour; anything else is a proposal in
   `docs/findings.md`.
@@ -138,7 +138,7 @@ More in [`docs/rationale.md`](docs/rationale.md).
 
 ## Findings
 
-Formalising v0.2 surfaced fourteen gaps, five of them high severity: no
+Specifying v0.2 in full surfaced fourteen gaps, five of them high severity: no
 message relates a response to its handoff and receiver; objects are open; the
 two age bands can disagree; the under-15 parental rule is not in the schema
 and child assent has no field; and others. Each has a proposal. See

@@ -11,7 +11,7 @@ Source: https://github.com/alwaysfoundation/always-platform, spec/schemas/.
 
 - spec/upstream/always-pathway-v0.2.schema.json is the upstream schema,
   unchanged.
-- spec/pathway-v0.2-formal.md restates the upstream standard and adds
+- spec/pathway-v0.2-spec.md restates the upstream standard and adds
   invariants, a state machine, conformance profiles and security and privacy
   considerations. Additions are marked with their source in section 7.
 - schema/pathway-v0.2-strict.schema.json composes the upstream schema by

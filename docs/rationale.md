@@ -1,11 +1,11 @@
 # Design rationale
 
 Why this repository is shaped the way it is, and why the standard it
-formalises makes the choices it does.
+specifies makes the choices it does.
 
 ## Part 1. The standard's design
 
-These are the properties of Always Pathway v0.2 that the formal specification
+These are the properties of Always Pathway v0.2 that the specification
 preserves, with the reasoning as I understand it. Credit for the design
 belongs to Always Foundation.
 
@@ -40,7 +40,7 @@ A person who goes from an event to a course to a church is three handoffs with
 three consents and three identifiers. Nothing in the format links them. This
 is deliberate: Always Foundation's ADR 0013 records its decision not to build
 any capability to recognise the same person across organisations, by any
-technique. The formal specification makes it a MUST NOT for implementations
+technique. The specification makes it a MUST NOT for implementations
 too (§11).
 
 ### Borrowed, not invented, envelopes
@@ -65,9 +65,9 @@ the same handoff where FHIR would usually create a new Task.
 
 ## Part 2. This repository's design
 
-### Formalise, don't fork
+### Specify, don't fork
 
-The upstream schema is included unchanged and remains the base. The formal
+The upstream schema is included unchanged and remains the base. The
 specification restates it and adds invariants, each labelled with its source.
 Anything not traceable to the upstream text or the reference implementation's
 documented behaviour is confined to the strict profile or marked as a

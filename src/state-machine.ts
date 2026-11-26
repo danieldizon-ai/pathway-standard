@@ -11,7 +11,7 @@ export const START = '⊥' as const;
 export type MachineState = HandoffState | typeof START;
 
 /**
- * The transition relation δ of spec §8.2. Self-loops are handled separately.
+ * The transition table of spec §8.2. Self-loops are handled separately.
  * `START` lists the permitted first states of a *complete* log; a partial
  * stream (the default) may begin in any state, because a system first hears
  * of a handoff wherever it joins it.
