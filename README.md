@@ -34,6 +34,7 @@ npx pathway-validate --kind bundle conformance/vectors/bundle-upstream-example.j
 | [`conformance/`](conformance/) | Language-neutral test vectors indexed by invariant code |
 | [`docs/findings.md`](docs/findings.md) | Fourteen gaps found in v0.2 while specifying it, with proposals |
 | [`docs/rationale.md`](docs/rationale.md) | Why the standard and this repository are designed as they are |
+| [`docs/adapters.md`](docs/adapters.md) | The adapter profile, and the reference adapters for YouVersion Platform apps and Echo |
 
 ## The format in one picture
 
@@ -98,6 +99,24 @@ s.traces; // [{ handoffId, states: ['⊥', 'offered', 'accepted', 'contacted'] }
 The strict schema is exported as `pathway-standard/schema/strict` for use with
 any JSON Schema 2020-12 validator; register the upstream schema
 (`pathway-standard/schema/upstream`) alongside it.
+
+## Implementations
+
+Two reference adapters connect real platforms to Pathway and show the
+online-to-offline pathway end to end:
+
+- [**youversion-pathway-adapter**](https://github.com/DanielDizon-AI/youversion-pathway-adapter):
+  a consent-first "connect with a local church" step for free Bible apps built
+  on the YouVersion Platform.
+- [**echoglobal-adapter**](https://github.com/DanielDizon-AI/echoglobal-adapter):
+  hands a person from an online ministry conversation on Echo to a local
+  church, with outcomes flowing back to the conversation.
+
+Each lives in its own repository, keeps its own notices and platform terms,
+and is not affiliated with the platform it connects to. Both validate every
+handoff with this package, and CI here runs their tests against every change
+to the standard. [`docs/adapters.md`](docs/adapters.md) sets out the profile
+any adapter should meet.
 
 ## Invariants at a glance
 

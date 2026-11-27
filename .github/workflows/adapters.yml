@@ -1,0 +1,45 @@
+name: Reference adapters
+
+# Runs the test suites of the reference adapters against this checkout of the
+# standard, so a change that would break an implementation is visible on the
+# pull request that makes it.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  adapter:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        adapter:
+          - DanielDizon-AI/youversion-pathway-adapter
+          - DanielDizon-AI/echoglobal-adapter
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: standard
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ matrix.adapter }}
+          path: adapter
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build the standard
+        working-directory: standard
+        run: npm ci
+      - name: Install the adapter against this checkout
+        working-directory: adapter
+        run: |
+          npm ci
+          npm install --no-save "$GITHUB_WORKSPACE/standard"
+      - name: Adapter tests
+        working-directory: adapter
+        run: npm test
